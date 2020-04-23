@@ -35,6 +35,6 @@ public class Bullet : MonoBehaviour
         //Destroy(obj, 0.5f);
 
         // disable the bullet
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

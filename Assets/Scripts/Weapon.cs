@@ -66,21 +66,10 @@ public class Weapon : MonoBehaviour
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hitInfo))
         {
-            //if (hit.rigidbody != null)
-            //{
-            //    hit.rigidbody.AddForceAtPosition(ray.direction * pokeForce, hit.point);
-            //}
-            // look at the target
             Vector3 dir = (hitInfo.point - muzzle.position).normalized;
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-            bullet.transform.rotation = Quaternion.Euler(dir.x, dir.y, dir.z);//dir;// Vector3.forward * angle;
+            //bullet.transform.rotation = Quaternion.Euler(dir.x, dir.y, dir.z);//dir;// Vector3.forward * angle;
             bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
         }
-
-        //bullet.transform.rotation = muzzle.rotation;
-
-        // set the velocity
-        //bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
     }
 }
