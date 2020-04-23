@@ -280,7 +280,7 @@ MonoBehaviour:
   curAmmo: 1
   maxAmmo: 0
   infiniteAmmo: 1
-  bulletSpeed: 10
+  bulletSpeed: 50
   shootRate: 0.1
 --- !u!1 &534669902
 GameObject:

@@ -18,13 +18,17 @@ public class Weapon : MonoBehaviour
     private float lastShootTime;        // last time we shot a bullet
     private bool isPlayer;              // are we the player's weapon?
 
+    private Camera cam;
+
     //public AudioClip shootSfx;
     //private AudioSource audioSource;
 
     void Awake ()
     {
+        cam = Camera.main;
+
         // are we attached to the player?
-        if(GetComponent<Player>())
+        if (GetComponent<Player>())
             isPlayer = true;
 
         //audioSource = GetComponent<AudioSource>();
@@ -56,9 +60,27 @@ public class Weapon : MonoBehaviour
         GameObject bullet = bulletPool.GetObject();
 
         bullet.transform.position = muzzle.position;
-        bullet.transform.rotation = muzzle.rotation;
+
+        // https://docs.unity3d.com/ScriptReference/RaycastHit-point.html
+        RaycastHit hitInfo;
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            //if (hit.rigidbody != null)
+            //{
+            //    hit.rigidbody.AddForceAtPosition(ray.direction * pokeForce, hit.point);
+            //}
+            // look at the target
+            Vector3 dir = (hitInfo.point - muzzle.position).normalized;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+            bullet.transform.rotation = Quaternion.Euler(dir.x, dir.y, dir.z);//dir;// Vector3.forward * angle;
+            bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
+        }
+
+        //bullet.transform.rotation = muzzle.rotation;
 
         // set the velocity
-        bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
+        //bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
     }
 }
