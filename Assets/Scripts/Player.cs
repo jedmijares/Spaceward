@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
         float y = Input.GetAxis("Vertical") * moveSpeed;
 
         Vector3 dir = transform.right * x + transform.up * y;
-        dir.z = rig.velocity.z;
+        dir.z = 0;
 
         // apply the velocity
         rig.velocity = dir;

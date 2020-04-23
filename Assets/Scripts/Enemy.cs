@@ -20,12 +20,14 @@ public class Enemy : MonoBehaviour
 
     //private Weapon weapon;
     //private GameObject target;
+    private Rigidbody rig;
 
     void Start ()
     {
         // get the components
         //weapon = GetComponent<Weapon>();
         //target = FindObjectOfType<Player>().gameObject;
+        rig = GetComponent<Rigidbody>();
 
         //InvokeRepeating("UpdatePath", 0.0f, 0.5f);
     }
@@ -49,6 +51,13 @@ public class Enemy : MonoBehaviour
         //float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
 
         //transform.eulerAngles = Vector3.up * angle;
+
+        Vector3 dir = transform.right * moveSpeed;// + transform.up * y;
+        //dir.z = 0;
+        //dir.y = 0;
+
+        // apply the velocity
+        rig.velocity = dir;
     }
 
     //void ChaseTarget ()
