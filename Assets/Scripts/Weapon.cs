@@ -8,15 +8,15 @@ public class Weapon : MonoBehaviour
     //public GameObject bulletPrefab;
     public Transform muzzle;            // spawn pos for the bullet
 
-    public int curAmmo;                 // current amount of ammo
-    public int maxAmmo;                 // maximum amount of ammo we can get
-    public bool infiniteAmmo;           // do we have infinite ammo?
+    //public int curAmmo;                 // current amount of ammo
+    //public int maxAmmo;                 // maximum amount of ammo we can get
+    //public bool infiniteAmmo;           // do we have infinite ammo?
 
     public float bulletSpeed;           // initial velocity of the bullet
 
     public float shootRate;             // min time between shots
     private float lastShootTime;        // last time we shot a bullet
-    private bool isPlayer;              // are we the player's weapon?
+    //private bool isPlayer;              // are we the player's weapon?
 
     private Camera cam;
 
@@ -28,8 +28,8 @@ public class Weapon : MonoBehaviour
         cam = Camera.main;
 
         // are we attached to the player?
-        if (GetComponent<Player>())
-            isPlayer = true;
+        //if (GetComponent<Player>())
+        //    isPlayer = true;
 
         //audioSource = GetComponent<AudioSource>();
     }
@@ -39,7 +39,7 @@ public class Weapon : MonoBehaviour
     {
         if(Time.time - lastShootTime >= shootRate)
         {
-            if(curAmmo > 0 || infiniteAmmo == true)
+            //if(curAmmo > 0 || infiniteAmmo == true)
                 return true;
         }
 
@@ -50,7 +50,7 @@ public class Weapon : MonoBehaviour
     public void Shoot ()
     {
         lastShootTime = Time.time;
-        curAmmo--;
+        //curAmmo--;
 
         //if (isPlayer)
         //    GameUI.instance.UpdateAmmoText(curAmmo, maxAmmo);
