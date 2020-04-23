@@ -47,22 +47,20 @@ public class Player : MonoBehaviour
         //if (GameManager.instance.gamePaused == true)
         //    return;
 
-        Move();
-
-        //if(Input.GetButtonDown("Jump"))
-        //    TryJump();
 
         if (Input.GetButton("Fire1"))
         {
             if (weapon.CanShoot())
                 weapon.Shoot();
+            Move(moveSpeed * (float)0.7);
         }
+        else Move(moveSpeed);
 
         //CamLook();
     }
 
     // move horizontally based on movement inputs
-    void Move ()
+    void Move (float moveSpeed)
     {
         // get the x and z inputs
         float x = Input.GetAxis("Horizontal") * moveSpeed;
