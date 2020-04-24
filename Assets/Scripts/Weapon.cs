@@ -66,9 +66,7 @@ public class Weapon : MonoBehaviour
 
         //audioSource.PlayOneShot(shootSfx);
 
-        GameObject bullet = bulletPool.GetObject();
-
-        bullet.transform.position = muzzle.position;
+        
 
         if(isPlayer)
         {
@@ -77,17 +75,21 @@ public class Weapon : MonoBehaviour
             var ray = cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hitInfo))
             {
+                if(hitInfo.point.z < muzzle.position.z) // if the hit was closer to the camera than the muzzle
+                {
+                    return;
+                }
+                GameObject bullet = bulletPool.GetObject();
+                bullet.transform.position = muzzle.position;
                 Vector3 dir = (hitInfo.point - muzzle.position).normalized;
-
-                //bullet.transform.rotation = Quaternion.Euler(dir.x, dir.y, dir.z);//dir;// Vector3.forward * angle;
                 bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
             }
         }
         else // if an enemy
         {
+            GameObject bullet = bulletPool.GetObject();
+            bullet.transform.position = muzzle.position;
             Vector3 dir = (target.transform.position - muzzle.position).normalized;
-
-            //bullet.transform.rotation = Quaternion.Euler(dir.x, dir.y, dir.z);//dir;// Vector3.forward * angle;
             bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
         }
     }
