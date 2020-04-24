@@ -25,9 +25,9 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         //did we hit the player ?
-        //if (other.CompareTag("Player"))
-            //other.GetComponent<Player>().TakeDamage(damage);
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Player"))
+            other.GetComponent<Player>().TakeDamage(damage);
+        else if (other.CompareTag("Enemy"))
             other.GetComponent<Enemy>().TakeDamage(damage);
 
         //// create the hit particle

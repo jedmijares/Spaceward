@@ -18,14 +18,14 @@ public class Enemy : MonoBehaviour
 
     //private List<Vector3> path;
 
-    //private Weapon weapon;
+    private Weapon weapon;
     //private GameObject target;
     private Rigidbody rig;
 
     void Start ()
     {
         // get the components
-        //weapon = GetComponent<Weapon>();
+        weapon = GetComponent<Weapon>();
         //target = FindObjectOfType<Player>().gameObject;
         rig = GetComponent<Rigidbody>();
 
@@ -38,8 +38,8 @@ public class Enemy : MonoBehaviour
 
         //if(dist <= attackRange)
         //{
-        //    if(weapon.CanShoot())
-        //        weapon.Shoot();
+        if (weapon.CanShoot())
+            weapon.Shoot();
         //}
         //else
         //{
@@ -52,12 +52,12 @@ public class Enemy : MonoBehaviour
 
         //transform.eulerAngles = Vector3.up * angle;
 
-        Vector3 dir = transform.right * moveSpeed;// + transform.up * y;
+        //Vector3 dir = transform.right * moveSpeed;// + transform.up * y;
         //dir.z = 0;
         //dir.y = 0;
 
         // apply the velocity
-        rig.velocity = dir;
+        //rig.velocity = dir;
     }
 
     //void ChaseTarget ()

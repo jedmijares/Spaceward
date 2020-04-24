@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed;             // movement speed in units per second
+    public float firingSpeedPenalty = 0.5F;
     //public float jumpForce;             // force applied upwards
 
     //[Header("Camera")]
@@ -52,7 +53,7 @@ public class Player : MonoBehaviour
         {
             if (weapon.CanShoot())
                 weapon.Shoot();
-            Move(moveSpeed * (float)0.7);
+            Move(moveSpeed * firingSpeedPenalty);
         }
         else Move(moveSpeed);
 
@@ -98,16 +99,19 @@ public class Player : MonoBehaviour
     //            rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     //    }
 
-    //    // called when we get hit by a bullet
-    //    public void TakeDamage(int damage)
-    //    {
-    //        curHp -= damage;
+    // called when we get hit by a bullet
+    public void TakeDamage(int damage)
+    {
+        curHp -= damage;
 
-    //        GameUI.instance.UpdateHealthBar(curHp, maxHp);
+        //GameUI.instance.UpdateHealthBar(curHp, maxHp);
 
-    //        if (curHp <= 0)
-    //            Die();
-    //    }
+        if (curHp <= 0)
+        {
+            //Die();
+        }
+
+    }
 
     //    // called when our health reaches 0
     //    void Die()

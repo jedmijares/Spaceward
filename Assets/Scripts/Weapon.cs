@@ -16,7 +16,8 @@ public class Weapon : MonoBehaviour
 
     public float shootRate;             // min time between shots
     private float lastShootTime;        // last time we shot a bullet
-    //private bool isPlayer;              // are we the player's weapon?
+    private bool isPlayer = false;              // are we the player's weapon?
+    private GameObject target;
 
     private Camera cam;
 
@@ -25,11 +26,19 @@ public class Weapon : MonoBehaviour
 
     void Awake ()
     {
-        cam = Camera.main;
+
 
         // are we attached to the player?
-        //if (GetComponent<Player>())
-        //    isPlayer = true;
+        if (GetComponent<Player>())
+        {
+            cam = Camera.main;
+            isPlayer = true;
+        }
+        else
+        {
+            target = FindObjectOfType<Player>().gameObject;
+            isPlayer = false;
+        }
 
         //audioSource = GetComponent<AudioSource>();
     }
@@ -61,12 +70,22 @@ public class Weapon : MonoBehaviour
 
         bullet.transform.position = muzzle.position;
 
-        // https://docs.unity3d.com/ScriptReference/RaycastHit-point.html
-        RaycastHit hitInfo;
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hitInfo))
+        if(isPlayer)
         {
-            Vector3 dir = (hitInfo.point - muzzle.position).normalized;
+            // https://docs.unity3d.com/ScriptReference/RaycastHit-point.html
+            RaycastHit hitInfo;
+            var ray = cam.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hitInfo))
+            {
+                Vector3 dir = (hitInfo.point - muzzle.position).normalized;
+
+                //bullet.transform.rotation = Quaternion.Euler(dir.x, dir.y, dir.z);//dir;// Vector3.forward * angle;
+                bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
+            }
+        }
+        else // if an enemy
+        {
+            Vector3 dir = (target.transform.position - muzzle.position).normalized;
 
             //bullet.transform.rotation = Quaternion.Euler(dir.x, dir.y, dir.z);//dir;// Vector3.forward * angle;
             bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
