@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     private Camera cam;
     private Rigidbody rig;
     private Weapon weapon;
+    public GameObject shipModel;
 
     void Awake ()
     {
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour
         cam = Camera.main;
         rig = GetComponent<Rigidbody>();
         weapon = GetComponent<Weapon>();
+        //shipModel = GetComponent<shipModel>();
 
         //// disable cursor
         //Cursor.lockState = CursorLockMode.Locked;
@@ -64,14 +66,16 @@ public class Player : MonoBehaviour
     void Move (float moveSpeed)
     {
         // get the x and z inputs
-        float x = Input.GetAxis("Horizontal") * moveSpeed;
-        float y = Input.GetAxis("Vertical") * moveSpeed;
+        float x = Input.GetAxis("Horizontal");// * moveSpeed;
+        float y = Input.GetAxis("Vertical");// * moveSpeed;
 
-        Vector3 dir = transform.right * x + transform.up * y;
+        Vector3 dir = (transform.right * x + transform.up * y) * moveSpeed;
         dir.z = 0;
-
         // apply the velocity
         rig.velocity = dir;
+
+        shipModel.transform.rotation = Quaternion.Euler(rig.velocity.y * -2.5f, 0.0f, rig.velocity.x * -2.5f);
+        // rigidbody.rotation = Quaternion.Euler (0.0f, 0.0f, rigidbody.velocity.x * -tilt);
     }
 
     // rotate the camera based on mouse movement
