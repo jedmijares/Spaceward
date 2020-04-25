@@ -280,7 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPool: {fileID: 211678849}
   muzzle: {fileID: 1361189166}
-  bulletSpeed: 50
+  bulletSpeed: 200
   shootRate: 0.1
 --- !u!65 &211678851
 BoxCollider:
@@ -884,12 +884,12 @@ PrefabInstance:
     - target: {fileID: 7681921526460022292, guid: 38196083e7231d449b9a429fed656e3c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5
+      value: -44
       objectReference: {fileID: 0}
     - target: {fileID: 7681921526460022292, guid: 38196083e7231d449b9a429fed656e3c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7681921526460022292, guid: 38196083e7231d449b9a429fed656e3c,
         type: 3}
@@ -940,6 +940,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7681921526460022295, guid: 38196083e7231d449b9a429fed656e3c,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7681921526460022296, guid: 38196083e7231d449b9a429fed656e3c,
         type: 3}

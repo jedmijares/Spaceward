@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public int scoreToGive = 50;
 
     [Header("Movement")]
-    public float moveSpeed = 5;
+    public float moveSpeed = 15;
     //public float attackRange;
     //public float yPathOffset;
 
@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     private Weapon weapon;
     //private GameObject target;
     private Rigidbody rig;
+    private Vector3 destination;// = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 40)); // next position to move towards
 
     void Start ()
     {
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
         weapon = GetComponent<Weapon>();
         //target = FindObjectOfType<Player>().gameObject;
         rig = GetComponent<Rigidbody>();
+        destination = transform.position;
 
         //InvokeRepeating("UpdatePath", 0.0f, 0.5f);
     }
@@ -46,6 +48,8 @@ public class Enemy : MonoBehaviour
         //    ChaseTarget();
         //}
 
+        Move();
+
         //// look at the target
         //Vector3 dir = (target.transform.position - transform.position).normalized;
         //float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
@@ -58,6 +62,16 @@ public class Enemy : MonoBehaviour
 
         // apply the velocity
         //rig.velocity = dir;
+    }
+
+    void Move()
+    {
+        //Vector3 screenPosition = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), -40)); //Camera.main.farClipPlane / 2));
+        transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
+        if (transform.position == destination)
+        {
+            destination = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 50));
+        }
     }
 
     //void ChaseTarget ()

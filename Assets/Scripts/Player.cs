@@ -73,6 +73,10 @@ public class Player : MonoBehaviour
 
         Vector3 dir = (transform.right * x + transform.up * y) * moveSpeed;
         dir.z = 0;
+        //Vector3 shipPosition = cam.ScreenToWorldPoint(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+        //if (shipPosition.x < 0) dir.x = 0;
+        //if (shipPosition.y < 0) dir.x = 0;
+        //Debug.Log("x pos: " + shipPosition.x);
         // apply the velocity
         rig.velocity = dir;
 
