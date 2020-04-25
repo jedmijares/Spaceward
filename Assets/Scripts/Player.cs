@@ -53,8 +53,10 @@ public class Player : MonoBehaviour
 
         if (Input.GetButton("Fire1"))
         {
-            if (weapon.CanShoot())
+            if (weapon.CanShoot()) // && (rig.velocity.magnitude <= (moveSpeed*firingSpeedPenalty*Mathf.Sqrt(2))+1))
+            {
                 weapon.Shoot();
+            }
             Move(moveSpeed * firingSpeedPenalty);
         }
         else Move(moveSpeed);
@@ -77,31 +79,6 @@ public class Player : MonoBehaviour
         shipModel.transform.rotation = Quaternion.Euler(rig.velocity.y * -2.5f, 0.0f, rig.velocity.x * -2.5f);
         // rigidbody.rotation = Quaternion.Euler (0.0f, 0.0f, rigidbody.velocity.x * -tilt);
     }
-
-    // rotate the camera based on mouse movement
-    //    void CamLook ()
-    //    {
-    //        // get mouse inputs
-    //        float y = Input.GetAxis("Mouse X") * lookSensitivity;
-    //        rotX += Input.GetAxis("Mouse Y") * lookSensitivity;
-
-    //        // clamp the vertical rotation
-    //        rotX = Mathf.Clamp(rotX, minLookX, maxLookX);
-
-    //        // rotate the camera and player
-    //        cam.transform.localRotation = Quaternion.Euler(-rotX, 0, 0);
-    //        transform.eulerAngles += Vector3.up * y;
-    //    }
-
-    //    // called when we press the 'jump' button
-    //    void TryJump ()
-    //    {
-    //        Ray ray = new Ray(transform.position, Vector3.down);
-
-    //        // shoot a raycast down and if it hits something - jump
-    //        if(Physics.Raycast(ray, 1.1f))
-    //            rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    //    }
 
     // called when we get hit by a bullet
     public void TakeDamage(int damage)
@@ -131,11 +108,4 @@ public class Player : MonoBehaviour
     //        GameUI.instance.UpdateHealthBar(curHp, maxHp);
     //    }
 
-    //    // called when the player is given ammo
-    //    public void GiveAmmo(int amountToGive)
-    //    {
-    //        weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive, 0, weapon.maxAmmo);
-
-    //        GameUI.instance.UpdateAmmoText(weapon.curAmmo, weapon.maxAmmo);
-    //    }
 }
