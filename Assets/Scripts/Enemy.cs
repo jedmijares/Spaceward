@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     //private GameObject target;
     private Rigidbody rig;
     private Vector3 destination;// = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 40)); // next position to move towards
+    private Camera cam;
 
     void Start ()
     {
@@ -30,6 +31,7 @@ public class Enemy : MonoBehaviour
         //target = FindObjectOfType<Player>().gameObject;
         rig = GetComponent<Rigidbody>();
         destination = transform.position;
+        cam = Camera.main;
 
         //InvokeRepeating("UpdatePath", 0.0f, 0.5f);
     }
@@ -66,11 +68,10 @@ public class Enemy : MonoBehaviour
 
     void Move()
     {
-        //Vector3 screenPosition = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), -40)); //Camera.main.farClipPlane / 2));
         transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
         if (transform.position == destination)
         {
-            destination = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 50));
+            destination = cam.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 50));
         }
     }
 
