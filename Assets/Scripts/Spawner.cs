@@ -9,11 +9,13 @@ public class Spawner : MonoBehaviour
     public GameObject objects;
     //public ObjectPool objects;
     public Vector3 spawnPosition;
+    public float SpawnTime = 5.0f;
+    public float InitialTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("spawn", 0.0f, 1.0f);
+        InvokeRepeating("Spawn", InitialTime, SpawnTime);
     }
 
     // Update is called once per frame
@@ -23,7 +25,7 @@ public class Spawner : MonoBehaviour
         
     }
 
-    void spawn()
+    void Spawn()
     {
         GameObject spawned = Instantiate(objects);
         spawned.transform.position = spawnPosition;
