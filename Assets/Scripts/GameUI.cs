@@ -15,10 +15,10 @@ public class GameUI : MonoBehaviour
     //[Header("Pause Menu")]
     //public GameObject pauseMenu;                // pause menu object
 
-    //[Header("End Game Screen")]
-    //public GameObject endGameScreen;            // end game screen object
+    [Header("End Game Screen")]
+    public GameObject endGameScreen;            // end game screen object
     //public TextMeshProUGUI endGameHeaderText;   // end game screen header text
-    //public TextMeshProUGUI endGameScoreText;    // end game screen displaying our final score
+    public TextMeshProUGUI endGameScoreText;    // end game screen displaying our final score
 
     // instance
     public static GameUI instance;
@@ -41,26 +41,20 @@ public class GameUI : MonoBehaviour
         scoreText.text = "Score: " + score;
     }
 
-    // updates the ammo text
-    //public void UpdateAmmoText (int curAmmo, int maxAmmo)
-    //{
-    //    ammoText.text = "Ammo: " + curAmmo + " / " + maxAmmo;
-    //}
-
     //// enables or disables the pause menu
     //public void TogglePauseMenu (bool paused)
     //{
     //    pauseMenu.SetActive(paused);
     //}
 
-    //// activates and sets the end game screen
-    //public void SetEndGameScreen (bool won, int score)
-    //{
-    //    endGameScreen.SetActive(true);
-    //    endGameHeaderText.text = won == true ? "You Win" : "You Lose";
-    //    endGameHeaderText.color = won == true ? Color.green : Color.red;
-    //    endGameScoreText.text = "<b>Score</b>\n" + score;
-    //}
+    // activates and sets the end game screen
+    public void SetEndGameScreen(int score)
+    {
+        endGameScreen.SetActive(true);
+        //endGameHeaderText.text = won == true ? "You Win" : "You Lose";
+        //endGameHeaderText.color = won == true ? Color.green : Color.red;
+        endGameScoreText.text = "<b>Score</b>\n" + score;
+    }
 
     //// called when we press the "Resume" button
     //public void OnResumeButton ()
@@ -68,11 +62,11 @@ public class GameUI : MonoBehaviour
     //    // GameManager.instance.TogglePauseGame();
     //}
 
-    //// called when we press the "Restart" button
-    //public void OnRestartButton ()
-    //{
-    //    SceneManager.LoadScene("Game");
-    //}
+    // called when we press the "Restart" button
+    public void OnRestartButton()
+    {
+        SceneManager.LoadScene("Game");
+    }
 
     //// called when we press the "Menu" button
     //public void OnMenuButton ()

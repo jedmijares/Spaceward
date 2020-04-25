@@ -85,16 +85,16 @@ public class Player : MonoBehaviour
 
         if (curHp <= 0)
         {
-            //Die();
+            Die();
         }
 
     }
 
-    //    // called when our health reaches 0
-    //    void Die()
-    //    {
-    //        GameManager.instance.LoseGame();
-    //    }
+    // called when our health reaches 0
+    void Die()
+    {
+        GameManager.instance.LoseGame();
+    }
 
     //    // called when the player is given health
     //    public void GiveHealth(int amountToGive)

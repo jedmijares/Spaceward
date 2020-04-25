@@ -45,4 +45,9 @@ public class GameManager : MonoBehaviour
         //if (curScore >= scoreToWin)
         //    WinGame();
     }
+
+    public void LoseGame()
+    {
+        GameUI.instance.SetEndGameScreen(Score);
+    }
 }
