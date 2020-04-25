@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
+    public static GameManager instance;
+    public int Score;
+
     void OnMouseEnter()
     {
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
@@ -22,11 +25,24 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         OnMouseEnter();
+        instance = this;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void AddScore(int score)
+    {
+        Score += score;
+
+        // update the score text
+        GameUI.instance.UpdateScoreText(Score);
+
+        //// have we reached the score to win?
+        //if (curScore >= scoreToWin)
+        //    WinGame();
     }
 }

@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
     {
         curHp -= damage;
 
-        //GameUI.instance.UpdateHealthBar(curHp, maxHp);
+        GameUI.instance.UpdateHealthBar(curHp, maxHp);
 
         if (curHp <= 0)
         {
