@@ -73,14 +73,18 @@ public class Player : MonoBehaviour
 
         Vector3 dir = (transform.right * x + transform.up * y) * moveSpeed;
         dir.z = 0;
-        //Vector3 shipPosition = cam.ScreenToWorldPoint(new Vector3(transform.position.x, transform.position.y, transform.position.z));
-        //if (shipPosition.x < 0) dir.x = 0;
-        //if (shipPosition.y < 0) dir.x = 0;
+        Vector3 shipPosition = cam.WorldToScreenPoint(transform.position);
+        if ((shipPosition.x < 0) && (dir.x < 0)) dir.x = 0;
+        else if ((shipPosition.x > cam.pixelWidth) && (dir.x > 0)) dir.x = 0;
+        if (shipPosition.y < 0 && (dir.y < 0)) dir.y = 0;
+        else if ((shipPosition.y > cam.pixelHeight) && (dir.y > 0)) dir.y = 0;
         //Debug.Log("x pos: " + shipPosition.x);
         // apply the velocity
         rig.velocity = dir;
 
         shipModel.transform.rotation = Quaternion.Euler(rig.velocity.y * -2.5f, 0.0f, rig.velocity.x * -2.5f);
+
+        
         // rigidbody.rotation = Quaternion.Euler (0.0f, 0.0f, rigidbody.velocity.x * -tilt);
     }
 
