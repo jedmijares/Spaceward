@@ -5,12 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public ObjectPool bulletPool;
-    //public GameObject bulletPrefab;
     public Transform muzzle;            // spawn pos for the bullet
-
-    //public int curAmmo;                 // current amount of ammo
-    //public int maxAmmo;                 // maximum amount of ammo we can get
-    //public bool infiniteAmmo;           // do we have infinite ammo?
 
     public float bulletSpeed;           // initial velocity of the bullet
 
@@ -48,7 +43,6 @@ public class Weapon : MonoBehaviour
     {
         if(Time.time - lastShootTime >= shootRate)
         {
-            //if(curAmmo > 0 || infiniteAmmo == true)
                 return true;
         }
 
@@ -59,21 +53,14 @@ public class Weapon : MonoBehaviour
     public void Shoot ()
     {
         lastShootTime = Time.time;
-        //curAmmo--;
-
-        //if (isPlayer)
-        //    GameUI.instance.UpdateAmmoText(curAmmo, maxAmmo);
 
         //audioSource.PlayOneShot(shootSfx);
-
-        
 
         if(isPlayer)
         {
             // https://docs.unity3d.com/ScriptReference/RaycastHit-point.html
-            RaycastHit hitInfo;
             var ray = cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hitInfo))
+            if (Physics.Raycast(ray, out RaycastHit hitInfo))
             {
                 if(hitInfo.point.z < muzzle.position.z) // if the hit was closer to the camera than the muzzle
                 {
