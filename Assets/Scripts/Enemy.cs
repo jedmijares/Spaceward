@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject enemyModel;
+
     [Header("Stats")]
     public int curHp = 50;
     public int maxHp = 50;
@@ -13,13 +15,14 @@ public class Enemy : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed = 15;
+    public int screenEdgeOffset = 75;
+    public int distanceFromCamera = 40;
 
     private Weapon weapon;
     private Vector3 destination; // next position to move towards
     private Camera cam;
     private bool shooting;
     private int shotVolley;
-    private int shotsFired = 0;
 
     void Start ()
     {
@@ -28,7 +31,7 @@ public class Enemy : MonoBehaviour
         destination = transform.position;
         cam = Camera.main;
         shooting = false;
-        shotVolley = Random.Range(minShotVolley, maxShotVolley);
+        shotVolley = Random.Range(minShotVolley, maxShotVolley + 1);
     }
 
     void Update ()
@@ -63,7 +66,7 @@ public class Enemy : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
         if (transform.position == destination)
         {
-            destination = cam.ScreenToWorldPoint(new Vector3(Random.Range(75, Screen.width - 75), Random.Range(75, Screen.height - 75), 40));
+            destination = cam.ScreenToWorldPoint(new Vector3(Random.Range(screenEdgeOffset, Screen.width - screenEdgeOffset), Random.Range(screenEdgeOffset, Screen.height - screenEdgeOffset), distanceFromCamera));
             shooting = true;
         }
     }
