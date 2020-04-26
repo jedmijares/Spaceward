@@ -64,11 +64,19 @@ public class Weapon : MonoBehaviour
             {
                 if(hitInfo.point.z < muzzle.position.z) // if the hit was closer to the camera than the muzzle
                 {
-                    return;
+                    return; // do not fire
                 }
                 GameObject bullet = bulletPool.GetObject();
                 bullet.transform.position = muzzle.position;
                 Vector3 dir = (hitInfo.point - muzzle.position).normalized;
+                bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
+            }
+            else // if the raycast misses any object
+            {
+                Vector3 aimed = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 40));
+                GameObject bullet = bulletPool.GetObject();
+                bullet.transform.position = muzzle.position;
+                Vector3 dir = (aimed - muzzle.position).normalized;
                 bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
             }
         }
