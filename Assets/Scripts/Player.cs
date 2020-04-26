@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetButton("Fire1"))
         {
-            if (weapon.CanShoot()) // && (rig.velocity.magnitude <= (moveSpeed*firingSpeedPenalty*Mathf.Sqrt(2))+1))
+            if (weapon.CanShoot())
             {
                 weapon.Shoot();
             }
@@ -85,15 +85,9 @@ public class Player : MonoBehaviour
 
         if (curHp <= 0)
         {
-            Die();
+            GameManager.instance.LoseGame();
         }
 
-    }
-
-    // called when our health reaches 0
-    void Die()
-    {
-        GameManager.instance.LoseGame();
     }
 
     //    // called when the player is given health
