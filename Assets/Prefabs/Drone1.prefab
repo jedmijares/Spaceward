@@ -51,6 +51,8 @@ MonoBehaviour:
   curHp: 50
   maxHp: 50
   scoreToGive: 50
+  minShotVolley: 3
+  maxShotVolley: 5
   moveSpeed: 15
 --- !u!114 &7681921526460022294
 MonoBehaviour:
@@ -81,8 +83,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPool: {fileID: 7681921526460022294}
   muzzle: {fileID: 7681921526688347778}
-  bulletSpeed: 100
-  shootRate: 2
+  bulletSpeed: 40
+  shootRate: 0.2
 --- !u!64 &7681921526460022293
 MeshCollider:
   m_ObjectHideFlags: 0

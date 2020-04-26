@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objects: {fileID: 7681921526460022296, guid: 38196083e7231d449b9a429fed656e3c, type: 3}
   spawnPosition: {x: 0, y: 13, z: 40}
-  SpawnTime: 2
+  SpawnTime: 5
   InitialTime: 0
   OffscreenOffset: 10
   ZPosition: 40
