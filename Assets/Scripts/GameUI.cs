@@ -9,7 +9,6 @@ public class GameUI : MonoBehaviour
 {
     [Header("HUD")]
     public TextMeshProUGUI scoreText;           // text that displays our score
-    //public TextMeshProUGUI ammoText;            // text that displays our ammo
     public Image healthBarFill;                 // the image fill representing the health bar
 
     //[Header("Pause Menu")]

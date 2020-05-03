@@ -266,6 +266,7 @@ MonoBehaviour:
   objPrefab: {fileID: 7893168463384610116, guid: 23f6c26c4c2b3fd4b895181354ade401,
     type: 3}
   createOnStart: 0
+  maxCount: 0
 --- !u!114 &211678850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,6 +1339,7 @@ GameObject:
   - component: {fileID: 1223549786}
   - component: {fileID: 1223549787}
   - component: {fileID: 1223549788}
+  - component: {fileID: 1223549789}
   m_Layer: 0
   m_Name: _GameManager
   m_TagString: Untagged
@@ -1372,11 +1374,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objects: {fileID: 7681921526460022296, guid: 38196083e7231d449b9a429fed656e3c, type: 3}
-  spawnPosition: {x: 0, y: 13, z: 40}
-  SpawnTime: 5
+  SpawnTime: 2
   InitialTime: 0
   OffscreenOffset: 10
   ZPosition: 40
+  spawnPool: {fileID: 1223549789}
 --- !u!114 &1223549787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1409,6 +1411,22 @@ MonoBehaviour:
   healthBarFill: {fileID: 1304919758}
   endGameScreen: {fileID: 1873087419}
   endGameScoreText: {fileID: 1313673752}
+--- !u!114 &1223549789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223549784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3cc2e8e48e7774cbb1b16604fb15e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objPrefab: {fileID: 7681921526460022296, guid: 38196083e7231d449b9a429fed656e3c,
+    type: 3}
+  createOnStart: 0
+  maxCount: 5
 --- !u!114 &1304919758 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3124892398578584040, guid: 9590f5742f4788f4fab39b8462e8f3f1,

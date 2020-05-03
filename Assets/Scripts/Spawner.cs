@@ -8,11 +8,15 @@ public class Spawner : MonoBehaviour
 {
     public GameObject objects;
     //public ObjectPool objects;
-    public Vector3 spawnPosition;
     public float SpawnTime = 5.0f;
     public float InitialTime;
     public float OffscreenOffset = 10;
     public float ZPosition = 40;
+
+    public ObjectPool spawnPool;
+
+    [Header("Maximum")]
+    public int maxCount;
 
     private Camera cam;
 
@@ -30,10 +34,14 @@ public class Spawner : MonoBehaviour
         
     }
 
+    // spawn entity of there are fewer than the max allowed by spawnPool
     void Spawn()
     {
-        GameObject spawned = Instantiate(objects);
-        spawned.transform.position = getPosOffscreen(OffscreenOffset,ZPosition);
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length < maxCount)
+        {
+            GameObject spawned = spawnPool.GetObject();
+            if (spawned) spawned.transform.position = getPosOffscreen(OffscreenOffset, ZPosition);
+        }
     }
 
     // at the given z value, generate a Vector3 representing a random position a distance offset offscreen

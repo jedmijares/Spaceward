@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public GameObject enemyModel;
 
     [Header("Stats")]
-    public int curHp = 50;
+    public int curHp;
     public int maxHp = 50;
     public int scoreToGive = 50;
     public int minShotVolley = 3;
@@ -28,10 +28,17 @@ public class Enemy : MonoBehaviour
     {
         // get the components
         weapon = GetComponent<Weapon>();
-        destination = transform.position;
+        //destination = transform.position;
         cam = Camera.main;
+        destination = cam.ScreenToWorldPoint(new Vector3(Random.Range(screenEdgeOffset, Screen.width - screenEdgeOffset), Random.Range(screenEdgeOffset, Screen.height - screenEdgeOffset), distanceFromCamera));
+    }
+
+    private void OnEnable()
+    {
+        curHp = maxHp;
         shooting = false;
         shotVolley = Random.Range(minShotVolley, maxShotVolley + 1);
+        // destination = cam.ScreenToWorldPoint(new Vector3(Random.Range(screenEdgeOffset, Screen.width - screenEdgeOffset), Random.Range(screenEdgeOffset, Screen.height - screenEdgeOffset), distanceFromCamera));
     }
 
     void Update ()
@@ -83,6 +90,6 @@ public class Enemy : MonoBehaviour
     {
         GameManager.instance.AddScore(scoreToGive);
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

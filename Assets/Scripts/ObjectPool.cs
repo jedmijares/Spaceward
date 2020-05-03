@@ -6,6 +6,7 @@ public class ObjectPool : MonoBehaviour
 {
     public GameObject objPrefab;
     public int createOnStart;
+    // public int maxCount = 0;
 
     private List<GameObject> pooledObjs = new List<GameObject>();
 
@@ -28,6 +29,14 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetObject ()
     {
+        //if(maxCount != 0)
+        //{
+        //    if(pooledObjs.Count >= maxCount)
+        //    {
+        //        return null;
+        //    }
+        //}
+
         GameObject obj = pooledObjs.Find(x => x.activeInHierarchy == false);
 
         if(obj == null)
