@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject objects;
+    //public GameObject objects;
     //public ObjectPool objects;
     public float SpawnTime = 5.0f;
     public float InitialTime;

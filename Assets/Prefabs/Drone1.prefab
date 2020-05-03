@@ -48,12 +48,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bdce5dbbaaa94a41b5c2591f30bcba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyModel: {fileID: 0}
   curHp: 50
   maxHp: 50
   scoreToGive: 50
   minShotVolley: 3
   maxShotVolley: 5
   moveSpeed: 15
+  screenEdgeOffset: 75
+  distanceFromCamera: 40
 --- !u!114 &7681921526460022294
 MonoBehaviour:
   m_ObjectHideFlags: 0
