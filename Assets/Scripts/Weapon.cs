@@ -21,8 +21,6 @@ public class Weapon : MonoBehaviour
 
     void Awake ()
     {
-
-
         // are we attached to the player?
         if (GetComponent<Player>())
         {
