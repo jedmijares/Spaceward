@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class ShapeFactory : ScriptableObject {
+public class EnemySpawner : ScriptableObject {
 
 	[SerializeField]
-	Shape[] prefabs;
+	Enemy[] prefabs;
 
 	[SerializeField]
 	Material[] materials;
@@ -15,15 +15,15 @@ public class ShapeFactory : ScriptableObject {
 	[SerializeField]
 	bool recycle;
 
-	List<Shape>[] pools;
+	List<Enemy>[] pools;
 
-	public Shape Get (int shapeId = 0, int materialId = 0) {
-		Shape instance;
+	public Enemy Get (int enemyID = 0, int materialId = 0) {
+		Enemy instance;
 		if (recycle) {
 			if (pools == null) {
 				CreatePools();
 			}
-			List<Shape> pool = pools[shapeId];
+			List<Enemy> pool = pools[enemyID];
 			int lastIndex = pool.Count - 1;
 			if (lastIndex >= 0) {
 				instance = pool[lastIndex];
@@ -31,32 +31,32 @@ public class ShapeFactory : ScriptableObject {
 				pool.RemoveAt(lastIndex);
 			}
 			else {
-				instance = Instantiate(prefabs[shapeId]);
-				instance.ShapeId = shapeId;
+				instance = Instantiate(prefabs[enemyID]);
+				instance.EnemyID = enemyID;
 			}
 		}
 		else {
-			instance = Instantiate(prefabs[shapeId]);
-			instance.ShapeId = shapeId;
+			instance = Instantiate(prefabs[enemyID]);
+			instance.EnemyID = enemyID;
 		}
 
-		instance.SetMaterial(materials[materialId], materialId);
+		// instance.SetMaterial(materials[materialId], materialId);
 		return instance;
 	}
 
-	public Shape GetRandom () {
+	public Enemy GetRandom () {
 		return Get(
 			Random.Range(0, prefabs.Length),
 			Random.Range(0, materials.Length)
 		);
 	}
 
-	public void Reclaim (Shape shapeToRecycle) {
+	public void Reclaim (Enemy shapeToRecycle) {
 		if (recycle) {
 			if (pools == null) {
 				CreatePools();
 			}
-			pools[shapeToRecycle.ShapeId].Add(shapeToRecycle);
+			pools[shapeToRecycle.EnemyID].Add(shapeToRecycle);
 			shapeToRecycle.gameObject.SetActive(false);
 		}
 		else {
@@ -65,9 +65,9 @@ public class ShapeFactory : ScriptableObject {
 	}
 
 	void CreatePools () {
-		pools = new List<Shape>[prefabs.Length];
+		pools = new List<Enemy>[prefabs.Length];
 		for (int i = 0; i < pools.Length; i++) {
-			pools[i] = new List<Shape>();
+			pools[i] = new List<Enemy>();
 		}
 	}
 }

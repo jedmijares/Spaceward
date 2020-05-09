@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class Enemy : MonoBehaviour
 {
     public GameObject enemyModel;
@@ -17,6 +18,27 @@ public class Enemy : MonoBehaviour
     public float moveSpeed = 15;
     public int screenEdgeOffset = 75;
     public int distanceFromCamera = 40;
+
+    public int EnemyID
+    {
+        get
+        {
+            return enemyID;
+        }
+        set
+        {
+            if (enemyID == int.MinValue && value != int.MinValue)
+            {
+                enemyID = value;
+            }
+            else
+            {
+                Debug.LogError("Not allowed to change ShapeId.");
+            }
+        }
+    }
+
+    int enemyID = int.MinValue;
 
     private Weapon weapon;
     private Vector3 destination; // next position to move towards
