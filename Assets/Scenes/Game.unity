@@ -1945,8 +1945,6 @@ GameObject:
   - component: {fileID: 1223549785}
   - component: {fileID: 1223549787}
   - component: {fileID: 1223549788}
-  - component: {fileID: 1223549791}
-  - component: {fileID: 1223549790}
   m_Layer: 0
   m_Name: _GameManager
   m_TagString: Untagged
@@ -1984,6 +1982,11 @@ MonoBehaviour:
   cursorMode: 0
   hotSpot: {x: 256, y: 256}
   Score: 0
+  OffscreenOffset: 10
+  ZPosition: 40
+  SpawnTime: 5
+  InitialTime: 0
+  enemySpawner: {fileID: 11400000, guid: 8632f05ccd898c047b12c9194332d3cc, type: 2}
 --- !u!114 &1223549788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2000,39 +2003,6 @@ MonoBehaviour:
   healthBarFill: {fileID: 1304919758}
   endGameScreen: {fileID: 1873087419}
   endGameScoreText: {fileID: 1313673752}
---- !u!114 &1223549790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1223549784}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b3cc2e8e48e7774cbb1b16604fb15e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objPrefab: {fileID: 3291451151512156913, guid: 0ab683d06abf22d4b9b005f9915dfd69,
-    type: 3}
-  createOnStart: 3
---- !u!114 &1223549791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1223549784}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29db6115520a4304d87e857da0ec38a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpawnTime: 5
-  InitialTime: 0
-  OffscreenOffset: 10
-  ZPosition: 40
-  spawnPool: {fileID: 1223549790}
-  maxCount: 3
 --- !u!1 &1272909929
 GameObject:
   m_ObjectHideFlags: 0
