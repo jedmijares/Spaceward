@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     public float InitialTime;
 
     public ObjectSpawner enemySpawner;
-    List<SpawnableObject> enemies;
 
     private Camera cam;
 
@@ -42,7 +41,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        enemies = new List<SpawnableObject>();
         enemySpawner.initialize();
     }
 
@@ -72,7 +70,6 @@ public class GameManager : MonoBehaviour
             Transform t = instance.transform;
             if (instance) instance.transform.position = getPosOffscreen(OffscreenOffset, ZPosition);
         }
-        enemies.Add(instance);
     }
 
     // at the given z value, generate a Vector3 representing a random position a distance offset offscreen
