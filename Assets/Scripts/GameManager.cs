@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         enemies = new List<SpawnableObject>();
+        enemySpawner.initialize();
     }
 
     public void AddScore(int score)

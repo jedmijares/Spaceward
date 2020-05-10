@@ -13,9 +13,14 @@ public class ObjectSpawner : ScriptableObject
 	bool recycle = true;
 
 	public int maxObjects = -1;
-	private int currentCount = 0;
+	public int currentCount = 0;
 
 	List<SpawnableObject>[] pools;
+
+	public void initialize()
+	{
+		currentCount = 0;
+	}
 
 	public SpawnableObject Get (int objectID = 0)
 	{
