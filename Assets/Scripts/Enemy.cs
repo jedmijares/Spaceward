@@ -24,13 +24,11 @@ public class Enemy : SpawnableObject
     private bool shooting;
     private int shotVolley;
 
-    // public ObjectSpawner enemySpawner;
 
     void Start ()
     {
         // get the components
         weapon = GetComponent<Weapon>();
-        //destination = transform.position;
         cam = Camera.main;
         destination = cam.ScreenToWorldPoint(new Vector3(Random.Range(screenEdgeOffset, Screen.width - screenEdgeOffset), Random.Range(screenEdgeOffset, Screen.height - screenEdgeOffset), distanceFromCamera));
     }
@@ -40,7 +38,6 @@ public class Enemy : SpawnableObject
         curHp = maxHp;
         shooting = false;
         shotVolley = Random.Range(minShotVolley, maxShotVolley + 1);
-        // destination = cam.ScreenToWorldPoint(new Vector3(Random.Range(screenEdgeOffset, Screen.width - screenEdgeOffset), Random.Range(screenEdgeOffset, Screen.height - screenEdgeOffset), distanceFromCamera));
     }
 
     void Update ()
@@ -62,12 +59,6 @@ public class Enemy : SpawnableObject
         {
             Move();
         }
-
-        //// look at the target
-        //Vector3 dir = (target.transform.position - transform.position).normalized;
-        //float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
-
-        //transform.eulerAngles = Vector3.up * angle;
     }
 
     void Move()
@@ -91,8 +82,6 @@ public class Enemy : SpawnableObject
     void Die ()
     {
         GameManager.instance.AddScore(scoreToGive);
-
-        // gameObject.SetActive(false);
         creator.Reclaim(this);
     }
 }

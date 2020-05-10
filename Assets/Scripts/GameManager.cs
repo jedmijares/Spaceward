@@ -45,12 +45,6 @@ public class GameManager : MonoBehaviour
         enemies = new List<SpawnableObject>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AddScore(int score)
     {
         Score += score;
@@ -71,12 +65,6 @@ public class GameManager : MonoBehaviour
     // spawn entity of there are fewer than the max allowed by spawnPool
     void Spawn()
     {
-        //if (GameObject.FindGameObjectsWithTag("Enemy").Length < maxCount)
-        //{
-        //    GameObject spawned = spawnPool.GetObject();
-        //    if (spawned) spawned.transform.position = getPosOffscreen(OffscreenOffset, ZPosition);
-        //}
-
         SpawnableObject instance = enemySpawner.GetRandom();
         Transform t = instance.transform;
         if (instance) instance.transform.position = getPosOffscreen(OffscreenOffset, ZPosition);
@@ -88,7 +76,6 @@ public class GameManager : MonoBehaviour
     {
         Vector3 position = Vector3.zero;
         position.z = z;
-        // Vector3 destination = cam.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), z));
         if ((Random.value > 0.5f))
         {
             position.y = Random.Range(0, cam.pixelHeight);
