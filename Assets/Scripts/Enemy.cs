@@ -18,32 +18,13 @@ public class Enemy : SpawnableObject
     public int screenEdgeOffset = 75;
     public int distanceFromCamera = 40;
 
-    //public int EnemyID
-    //{
-    //    get
-    //    {
-    //        return enemyID;
-    //    }
-    //    set
-    //    {
-    //        if (enemyID == int.MinValue && value != int.MinValue)
-    //        {
-    //            enemyID = value;
-    //        }
-    //        else
-    //        {
-    //            Debug.LogError("Not allowed to change ShapeId.");
-    //        }
-    //    }
-    //}
-
-    int enemyID = int.MinValue;
-
     private Weapon weapon;
     private Vector3 destination; // next position to move towards
     private Camera cam;
     private bool shooting;
     private int shotVolley;
+
+    // public ObjectSpawner enemySpawner;
 
     void Start ()
     {
@@ -111,6 +92,7 @@ public class Enemy : SpawnableObject
     {
         GameManager.instance.AddScore(scoreToGive);
 
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
+        creator.Reclaim(this);
     }
 }

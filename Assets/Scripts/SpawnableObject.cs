@@ -24,4 +24,6 @@ public class SpawnableObject : MonoBehaviour
 		}
 	}
 	int objectID = int.MinValue;
+
+	public ObjectSpawner creator;
 }

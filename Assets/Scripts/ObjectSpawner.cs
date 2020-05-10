@@ -28,39 +28,39 @@ public class ObjectSpawner : ScriptableObject {
 			int lastIndex = pool.Count - 1;
 			if (lastIndex >= 0) {
 				instance = pool[lastIndex];
+				instance.creator = this;
 				instance.gameObject.SetActive(true);
 				pool.RemoveAt(lastIndex);
 			}
 			else {
 				instance = Instantiate(prefabs[objectID]);
+				instance.creator = this;
 				instance.ObjectID = objectID;
 			}
 		}
 		else {
 			instance = Instantiate(prefabs[objectID]);
+			instance.creator = this;
 			instance.ObjectID = objectID;
 		}
 
-		// instance.SetMaterial(materials[materialId], materialId);
 		return instance;
 	}
 
 	public SpawnableObject GetRandom () {
-		return Get(Random.Range(0, prefabs.Length)); //,
-			// Random.Range(0, materials.Length)
-		// );
+		return Get(Random.Range(0, prefabs.Length));
 	}
 
-	public void Reclaim (SpawnableObject shapeToRecycle) {
+	public void Reclaim (SpawnableObject objectToRecycle) {
 		if (recycle) {
 			if (pools == null) {
 				CreatePools();
 			}
-			//pools[shapeToRecycle.ObjectID].Add(shapeToRecycle);
-			shapeToRecycle.gameObject.SetActive(false);
+			pools[objectToRecycle.ObjectID].Add(objectToRecycle);
+			objectToRecycle.gameObject.SetActive(false);
 		}
 		else {
-			Destroy(shapeToRecycle.gameObject);
+			Destroy(objectToRecycle.gameObject);
 		}
 	}
 
