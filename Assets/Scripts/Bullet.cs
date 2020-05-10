@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : SpawnableObject
 {
     public int damage = 10;          // damage dealt to the target
     public float lifetime = 3;      // how long until the bullet despawns?
@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
     {
         // disable the bullet after 'lifetime' seconds
         if (Time.time - shootTime >= lifetime)
-            gameObject.SetActive(false);
+            creator.Reclaim(this);
     }
 
     void OnTriggerEnter(Collider other)
@@ -35,6 +35,7 @@ public class Bullet : MonoBehaviour
         //Destroy(obj, 0.5f);
 
         // disable the bullet
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        creator.Reclaim(this);
     }
 }

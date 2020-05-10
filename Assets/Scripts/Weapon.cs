@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public ObjectPool bulletPool;
+    // public ObjectPool bulletPool;
+    public ObjectSpawner bulletSpawner;
     public Transform muzzle;            // spawn pos for the bullet
+    public int bulletIndex = 0;
 
     public float bulletSpeed;           // initial velocity of the bullet
 
@@ -64,7 +66,7 @@ public class Weapon : MonoBehaviour
                 {
                     return; // do not fire
                 }
-                GameObject bullet = bulletPool.GetObject();
+                SpawnableObject bullet = bulletSpawner.Get(bulletIndex);
                 bullet.transform.position = muzzle.position;
                 Vector3 dir = (hitInfo.point - muzzle.position).normalized;
                 bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
@@ -72,7 +74,7 @@ public class Weapon : MonoBehaviour
             else // if the raycast misses any object
             {
                 Vector3 aimed = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 40));
-                GameObject bullet = bulletPool.GetObject();
+                SpawnableObject bullet = bulletSpawner.Get(bulletIndex);
                 bullet.transform.position = muzzle.position;
                 Vector3 dir = (aimed - muzzle.position).normalized;
                 bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
@@ -80,7 +82,7 @@ public class Weapon : MonoBehaviour
         }
         else // if an enemy
         {
-            GameObject bullet = bulletPool.GetObject();
+            SpawnableObject bullet = bulletSpawner.Get(bulletIndex);
             bullet.transform.position = muzzle.position;
             Vector3 dir = (target.transform.position - muzzle.position).normalized;
             bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;

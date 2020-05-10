@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class ObjectSpawner : ScriptableObject {
-
+public class ObjectSpawner : ScriptableObject
+{ 
 	[SerializeField]
 	SpawnableObject[] prefabs;
 
@@ -17,7 +17,7 @@ public class ObjectSpawner : ScriptableObject {
 
 	List<SpawnableObject>[] pools;
 
-	public SpawnableObject Get (int objectID = 0) //, int materialId = 0) 
+	public SpawnableObject Get (int objectID = 0)
 	{
 		SpawnableObject instance;
 		if (recycle) {

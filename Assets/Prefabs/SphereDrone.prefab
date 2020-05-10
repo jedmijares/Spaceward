@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bdce5dbbaaa94a41b5c2591f30bcba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyModel: {fileID: 0}
+  creator: {fileID: 0}
   curHp: 50
   maxHp: 50
   scoreToGive: 50
@@ -177,8 +177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8135406e2b31bf4c9ce75517912f0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPool: {fileID: 3291451151512156927}
+  bulletSpawner: {fileID: 11400000, guid: 2c0bbe36c6491b14286cfb83f24c2783, type: 2}
   muzzle: {fileID: 3291451151468376683}
+  bulletIndex: 1
   bulletSpeed: 10
   shootRate: 5
 --- !u!64 &3291451151512156924

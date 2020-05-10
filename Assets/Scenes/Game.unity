@@ -326,8 +326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8135406e2b31bf4c9ce75517912f0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPool: {fileID: 211678849}
+  bulletSpawner: {fileID: 11400000, guid: 2c0bbe36c6491b14286cfb83f24c2783, type: 2}
   muzzle: {fileID: 1361189166}
+  bulletIndex: 0
   bulletSpeed: 500
   shootRate: 0.1
 --- !u!65 &211678851
