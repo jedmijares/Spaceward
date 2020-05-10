@@ -7,7 +7,7 @@ using UnityEngine;
 public class ObjectSpawner : ScriptableObject {
 
 	[SerializeField]
-	GameObject[] prefabs;
+	SpawnableObject[] prefabs;
 
 	[SerializeField]
 	Material[] materials;
@@ -15,15 +15,16 @@ public class ObjectSpawner : ScriptableObject {
 	[SerializeField]
 	bool recycle = true;
 
-	List<GameObject>[] pools;
+	List<SpawnableObject>[] pools;
 
-	public GameObject Get (int objectID = 0, int materialId = 0) {
-		GameObject instance;
+	public SpawnableObject Get (int objectID = 0) //, int materialId = 0) 
+	{
+		SpawnableObject instance;
 		if (recycle) {
 			if (pools == null) {
 				CreatePools();
 			}
-			List<GameObject> pool = pools[objectID];
+			List<SpawnableObject> pool = pools[objectID];
 			int lastIndex = pool.Count - 1;
 			if (lastIndex >= 0) {
 				instance = pool[lastIndex];
@@ -32,26 +33,25 @@ public class ObjectSpawner : ScriptableObject {
 			}
 			else {
 				instance = Instantiate(prefabs[objectID]);
-				//instance.ObjectID = objectID;
+				instance.ObjectID = objectID;
 			}
 		}
 		else {
 			instance = Instantiate(prefabs[objectID]);
-			//instance.ObjectID = objectID;
+			instance.ObjectID = objectID;
 		}
 
 		// instance.SetMaterial(materials[materialId], materialId);
 		return instance;
 	}
 
-	public GameObject GetRandom () {
-		return Get(
-			Random.Range(0, prefabs.Length),
-			Random.Range(0, materials.Length)
-		);
+	public SpawnableObject GetRandom () {
+		return Get(Random.Range(0, prefabs.Length)); //,
+			// Random.Range(0, materials.Length)
+		// );
 	}
 
-	public void Reclaim (GameObject shapeToRecycle) {
+	public void Reclaim (SpawnableObject shapeToRecycle) {
 		if (recycle) {
 			if (pools == null) {
 				CreatePools();
@@ -65,9 +65,9 @@ public class ObjectSpawner : ScriptableObject {
 	}
 
 	void CreatePools () {
-		pools = new List<GameObject>[prefabs.Length];
+		pools = new List<SpawnableObject>[prefabs.Length];
 		for (int i = 0; i < pools.Length; i++) {
-			pools[i] = new List<GameObject>();
+			pools[i] = new List<SpawnableObject>();
 		}
 	}
 }

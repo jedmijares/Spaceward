@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public float InitialTime;
 
     public ObjectSpawner enemySpawner;
-    List<GameObject> enemies;
+    List<SpawnableObject> enemies;
 
     private Camera cam;
 
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        enemies = new List<GameObject>();
+        enemies = new List<SpawnableObject>();
     }
 
     // Update is called once per frame
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         //    if (spawned) spawned.transform.position = getPosOffscreen(OffscreenOffset, ZPosition);
         //}
 
-        GameObject instance = enemySpawner.GetRandom();
+        SpawnableObject instance = enemySpawner.GetRandom();
         Transform t = instance.transform;
         if (instance) instance.transform.position = getPosOffscreen(OffscreenOffset, ZPosition);
         enemies.Add(instance);

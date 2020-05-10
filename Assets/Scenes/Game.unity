@@ -1984,7 +1984,7 @@ MonoBehaviour:
   Score: 0
   OffscreenOffset: 10
   ZPosition: 40
-  SpawnTime: 5
+  SpawnTime: 1
   InitialTime: 0
   enemySpawner: {fileID: 11400000, guid: 8632f05ccd898c047b12c9194332d3cc, type: 2}
 --- !u!114 &1223549788
