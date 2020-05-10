@@ -66,8 +66,11 @@ public class GameManager : MonoBehaviour
     void Spawn()
     {
         SpawnableObject instance = enemySpawner.GetRandom();
-        Transform t = instance.transform;
-        if (instance) instance.transform.position = getPosOffscreen(OffscreenOffset, ZPosition);
+        if(instance)
+        {
+            Transform t = instance.transform;
+            if (instance) instance.transform.position = getPosOffscreen(OffscreenOffset, ZPosition);
+        }
         enemies.Add(instance);
     }
 

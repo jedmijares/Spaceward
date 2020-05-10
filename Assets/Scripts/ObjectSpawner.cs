@@ -10,48 +10,60 @@ public class ObjectSpawner : ScriptableObject
 	SpawnableObject[] prefabs;
 
 	[SerializeField]
-	Material[] materials;
-
-	[SerializeField]
 	bool recycle = true;
+
+	public int maxObjects = -1;
+	private int currentCount = 0;
 
 	List<SpawnableObject>[] pools;
 
 	public SpawnableObject Get (int objectID = 0)
 	{
-		SpawnableObject instance;
-		if (recycle) {
-			if (pools == null) {
-				CreatePools();
+		if ((maxObjects <= 0) | (currentCount < maxObjects))
+		{
+			currentCount++;
+			SpawnableObject instance;
+			if (recycle)
+			{
+				if (pools == null)
+				{
+					CreatePools();
+				}
+				List<SpawnableObject> pool = pools[objectID];
+				int lastIndex = pool.Count - 1;
+				if (lastIndex >= 0)
+				{
+					instance = pool[lastIndex];
+					instance.creator = this;
+					instance.gameObject.SetActive(true);
+					pool.RemoveAt(lastIndex);
+				}
+				else
+				{
+					instance = Instantiate(prefabs[objectID]);
+					instance.creator = this;
+					instance.ObjectID = objectID;
+				}
 			}
-			List<SpawnableObject> pool = pools[objectID];
-			int lastIndex = pool.Count - 1;
-			if (lastIndex >= 0) {
-				instance = pool[lastIndex];
-				instance.creator = this;
-				instance.gameObject.SetActive(true);
-				pool.RemoveAt(lastIndex);
-			}
-			else {
+			else
+			{
 				instance = Instantiate(prefabs[objectID]);
 				instance.creator = this;
 				instance.ObjectID = objectID;
 			}
-		}
-		else {
-			instance = Instantiate(prefabs[objectID]);
-			instance.creator = this;
-			instance.ObjectID = objectID;
-		}
 
-		return instance;
+			return instance;
+		}
+		else return null;
 	}
 
 	public SpawnableObject GetRandom () {
 		return Get(Random.Range(0, prefabs.Length));
 	}
 
-	public void Reclaim (SpawnableObject objectToRecycle) {
+	public void Reclaim (SpawnableObject objectToRecycle) 
+	{
+		currentCount--;
 		if (recycle) {
 			if (pools == null) {
 				CreatePools();
