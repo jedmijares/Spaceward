@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     public float InitialTime;
 
     public ObjectSpawner enemySpawner;
+    public ObjectSpawner bulletSpawner;
 
     private Camera cam;
 
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         enemySpawner.initialize();
+        bulletSpawner.initialize();
     }
 
     public void AddScore(int score)
@@ -59,6 +62,21 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         GameUI.instance.SetEndGameScreen(Score);
+    }
+
+    public void restart()
+    {
+        //Player.instance.transform.position = new Vector3(0, 0, 10);
+        //Player.instance.curHp = Player.instance.maxHp;
+        //enemySpawner.ReclaimAll();
+        //bulletSpawner.ReclaimAll();
+        enemySpawner.initialize();
+        bulletSpawner.initialize();
+        SceneManager.LoadScene("Game");
+        //Score = 0;
+        //GameUI.instance.endGameScreen.SetActive(false);
+        //GameUI.instance.UpdateHealthBar(1, 1);
+        //GameUI.instance.UpdateScoreText(0);
     }
 
     // spawn entity of there are fewer than the max allowed by spawnPool

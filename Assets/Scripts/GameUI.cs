@@ -64,7 +64,8 @@ public class GameUI : MonoBehaviour
     // called when we press the "Restart" button
     public void OnRestartButton()
     {
-        SceneManager.LoadScene("Game");
+        //SceneManager.LoadScene("Game");
+        GameManager.instance.restart();
     }
 
     //// called when we press the "Menu" button

@@ -17,12 +17,15 @@ public class Player : MonoBehaviour
     private Weapon weapon;
     public GameObject shipModel;
 
+    public static Player instance;
+
     void Awake ()
     {
         // get the components
         cam = Camera.main;
         rig = GetComponent<Rigidbody>();
         weapon = GetComponent<Weapon>();
+        instance = this;
 
         //// disable cursor
         //Cursor.lockState = CursorLockMode.Locked;

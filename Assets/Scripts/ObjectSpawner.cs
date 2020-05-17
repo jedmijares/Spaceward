@@ -15,11 +15,21 @@ public class ObjectSpawner : ScriptableObject
 	public int maxObjects = -1;
 	public int currentCount = 0;
 
-	List<SpawnableObject>[] pools;
+	[SerializeField]
+	public List<SpawnableObject>[] pools;
+	//[SerializeField]
+	//List<SpawnableObject> activeObjects;
 
 	public void initialize()
 	{
 		currentCount = 0;
+		if (pools != null)
+		{
+			for (int i = 0; i < pools.Length; i++)
+			{
+				pools[i].Clear();
+			}
+		}
 	}
 
 	public SpawnableObject Get (int objectID = 0)
@@ -41,6 +51,7 @@ public class ObjectSpawner : ScriptableObject
 					instance = pool[lastIndex];
 					instance.creator = this;
 					instance.gameObject.SetActive(true);
+					//activeObjects.Add(instance);
 					pool.RemoveAt(lastIndex);
 				}
 				else
@@ -48,6 +59,7 @@ public class ObjectSpawner : ScriptableObject
 					instance = Instantiate(prefabs[objectID]);
 					instance.creator = this;
 					instance.ObjectID = objectID;
+					//activeObjects.Add(instance);
 				}
 			}
 			else
@@ -55,6 +67,7 @@ public class ObjectSpawner : ScriptableObject
 				instance = Instantiate(prefabs[objectID]);
 				instance.creator = this;
 				instance.ObjectID = objectID;
+				//activeObjects.Add(instance);
 			}
 
 			return instance;
@@ -68,7 +81,6 @@ public class ObjectSpawner : ScriptableObject
 
 	public void Reclaim (SpawnableObject objectToRecycle) 
 	{
-		currentCount--;
 		if (recycle) {
 			if (pools == null) {
 				CreatePools();
@@ -79,7 +91,17 @@ public class ObjectSpawner : ScriptableObject
 		else {
 			Destroy(objectToRecycle.gameObject);
 		}
+		currentCount--;
+		//activeObjects.Remove(objectToRecycle);
 	}
+
+	//public void ReclaimAll()
+	//{
+	//	while(activeObjects.Count > 0)
+	//	{
+	//		Reclaim(activeObjects[0]);
+	//	}
+	//}	
 
 	void CreatePools () {
 		pools = new List<SpawnableObject>[prefabs.Length];

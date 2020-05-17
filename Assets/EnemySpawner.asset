@@ -16,4 +16,5 @@ MonoBehaviour:
   - {fileID: 7681921526460022295, guid: 38196083e7231d449b9a429fed656e3c, type: 3}
   - {fileID: 3291451151512156926, guid: 0ab683d06abf22d4b9b005f9915dfd69, type: 3}
   recycle: 1
-  maxObjects: -1
+  maxObjects: 3
+  currentCount: 3
