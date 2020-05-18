@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 211678850}
   - component: {fileID: 211678848}
   - component: {fileID: 211678851}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091c1eb8a3bd05242b9546067ce11654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curHp: 20
-  maxHp: 20
+  curHp: 30
+  maxHp: 30
   moveSpeed: 15
   firingSpeedPenalty: 0.2
   shipModel: {fileID: 573268724}
@@ -656,6 +656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Exhaust_Trail
       objectReference: {fileID: 0}
+    - target: {fileID: 1413021013181734, guid: d7786caaf9ad4b44988ff1c5ac5c10c0, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4746696964045042, guid: d7786caaf9ad4b44988ff1c5ac5c10c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -928,7 +932,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 573268725}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2229,7 +2233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1361189166}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2612,6 +2616,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: shipModel
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: af6e05a59b32c68419b1372817d8af61, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: af6e05a59b32c68419b1372817d8af61, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2920,7 +2928,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1940612404}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
