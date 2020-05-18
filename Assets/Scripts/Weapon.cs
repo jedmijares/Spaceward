@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    // public ObjectPool bulletPool;
     public ObjectSpawner bulletSpawner;
     public Transform muzzle;            // spawn pos for the bullet
     public int bulletIndex = 0;

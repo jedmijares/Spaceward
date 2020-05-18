@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Enemy : SpawnableObject
 {
-    // public GameObject enemyModel;
-
     [Header("Stats")]
     public int curHp;
     public int maxHp = 50;
