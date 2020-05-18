@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7681921526460022292}
   - component: {fileID: 7681921526460022295}
-  - component: {fileID: 7681921526460022294}
   - component: {fileID: 7681921526460022297}
   - component: {fileID: 7681921526460022293}
   - component: {fileID: 7681921526460022290}
@@ -57,21 +56,6 @@ MonoBehaviour:
   moveSpeed: 15
   screenEdgeOffset: 75
   distanceFromCamera: 40
---- !u!114 &7681921526460022294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7681921526460022296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b3cc2e8e48e7774cbb1b16604fb15e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objPrefab: {fileID: 7893168463384610116, guid: 23f6c26c4c2b3fd4b895181354ade401,
-    type: 3}
-  createOnStart: 0
 --- !u!114 &7681921526460022297
 MonoBehaviour:
   m_ObjectHideFlags: 0

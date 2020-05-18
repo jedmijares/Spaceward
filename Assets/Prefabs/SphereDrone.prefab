@@ -103,7 +103,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3291451151512156925}
   - component: {fileID: 3291451151512156926}
-  - component: {fileID: 3291451151512156927}
   - component: {fileID: 3291451151512156912}
   - component: {fileID: 3291451151512156924}
   - component: {fileID: 3291451151512156923}
@@ -150,21 +149,6 @@ MonoBehaviour:
   moveSpeed: 15
   screenEdgeOffset: 75
   distanceFromCamera: 40
---- !u!114 &3291451151512156927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3291451151512156913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b3cc2e8e48e7774cbb1b16604fb15e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objPrefab: {fileID: 6784503766317906512, guid: fff0349a5c0b67849a649cfcaa624094,
-    type: 3}
-  createOnStart: 0
 --- !u!114 &3291451151512156912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +165,7 @@ MonoBehaviour:
   muzzle: {fileID: 3291451151468376683}
   bulletIndex: 1
   bulletSpeed: 10
-  shootRate: 5
+  shootRate: 0.1
 --- !u!64 &3291451151512156924
 MeshCollider:
   m_ObjectHideFlags: 0
