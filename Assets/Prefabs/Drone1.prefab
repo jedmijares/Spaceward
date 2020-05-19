@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7681921526460022292}
-  - component: {fileID: 7681921526460022295}
   - component: {fileID: 7681921526460022297}
   - component: {fileID: 7681921526460022293}
   - component: {fileID: 7681921526460022290}
+  - component: {fileID: 3038267760527417882}
   m_Layer: 0
   m_Name: Drone1
   m_TagString: Enemy
@@ -35,27 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &7681921526460022295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7681921526460022296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bdce5dbbaaa94a41b5c2591f30bcba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creator: {fileID: 0}
-  curHp: 50
-  maxHp: 50
-  scoreToGive: 50
-  minShotVolley: 3
-  maxShotVolley: 5
-  moveSpeed: 15
-  screenEdgeOffset: 75
-  distanceFromCamera: 40
 --- !u!114 &7681921526460022297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +79,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2.8, z: 4}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &3038267760527417882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7681921526460022296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 147c601b7cc486344a7a21899237c5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creator: {fileID: 0}
+  curHp: 0
+  maxHp: 50
+  scoreToGive: 50
+  moveSpeed: 15
+  screenEdgeOffset: 75
+  distanceFromCamera: 40
+  minShotVolley: 3
+  maxShotVolley: 5
 --- !u!1 &7681921526688347781
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EnemySpawner
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 7681921526460022295, guid: 38196083e7231d449b9a429fed656e3c, type: 3}
-  - {fileID: 3291451151512156926, guid: 0ab683d06abf22d4b9b005f9915dfd69, type: 3}
+  - {fileID: 3038267760527417882, guid: 38196083e7231d449b9a429fed656e3c, type: 3}
+  - {fileID: 2528504351627577170, guid: 0ab683d06abf22d4b9b005f9915dfd69, type: 3}
   recycle: 1
   maxObjects: 3
-  currentCount: 3
+  currentCount: 2
