@@ -18,4 +18,4 @@ MonoBehaviour:
   - {fileID: 8142788010706889943, guid: 7c6327cecc4a0874eb1abb9116b60f30, type: 3}
   recycle: 1
   maxObjects: 3
-  currentCount: 1
+  currentCount: 3

@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091c1eb8a3bd05242b9546067ce11654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curHp: 30
-  maxHp: 30
+  curHp: 50
+  maxHp: 50
   moveSpeed: 15
   firingSpeedPenalty: 0.2
   shipModel: {fileID: 573268724}

@@ -11,8 +11,10 @@ public class Enemy : SpawnableObject
 
     [Header("Movement")]
     public float moveSpeed = 15;
-    public int screenEdgeOffset = 75;
-    public int distanceFromCamera = 40;
+    [SerializeField]
+    protected int screenEdgeOffset = 75;
+    [SerializeField]
+    protected int distanceFromCamera = 40;
 
     protected Vector3 destination; // next position to move towards
     protected Camera cam;
@@ -29,5 +31,11 @@ public class Enemy : SpawnableObject
     {
         GameManager.instance.AddScore(scoreToGive);
         creator.Reclaim(this);
+    }
+
+    protected Vector3 GetPositionInWindow()
+    {
+        if (!cam) cam = Camera.main;
+        return cam.ScreenToWorldPoint(new Vector3(Random.Range(screenEdgeOffset, Screen.width - screenEdgeOffset), Random.Range(screenEdgeOffset, Screen.height - screenEdgeOffset), distanceFromCamera));
     }
 }

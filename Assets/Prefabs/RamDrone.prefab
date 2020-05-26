@@ -127,10 +127,10 @@ MonoBehaviour:
   maxHp: 50
   scoreToGive: 50
   moveSpeed: 30
-  screenEdgeOffset: 75
+  screenEdgeOffset: 180
   distanceFromCamera: 40
-  attackingSpeed: 15
-  damage: 10
+  attackingSpeed: 7
+  damageOnCollision: 10
 --- !u!1001 &1422544137038148205
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,12 +11,22 @@ public class RammingEnemy : Enemy
     }
     State state;
     public int attackingSpeed = 15;
-    public int damage = 10;
+    public int damageOnCollision = 10;
+
+    void Start()
+    {
+        cam = Camera.main;
+        destination = GetPositionInWindow();
+        state = State.INITIALIZING;
+        curHp = maxHp;
+    }
 
     private void OnEnable()
     {
         this.transform.position = GameManager.instance.getPosOffscreen(GameManager.instance.OffscreenOffset, GameManager.instance.ZPosition);
-        destination = new Vector3(0, 0, GameManager.instance.ZPosition);
+        // destination = new Vector3(0, 0, GameManager.instance.ZPosition);
+        destination = GetPositionInWindow();
+        // destination = cam.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 40));
         state = State.INITIALIZING;
         curHp = maxHp;
     }
@@ -25,7 +35,7 @@ public class RammingEnemy : Enemy
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().TakeDamage(damage);
+            other.GetComponent<Player>().TakeDamage(damageOnCollision);
             creator.Reclaim(this);
         }
             
