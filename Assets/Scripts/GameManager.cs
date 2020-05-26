@@ -83,15 +83,15 @@ public class GameManager : MonoBehaviour
     void Spawn()
     {
         SpawnableObject instance = enemySpawner.GetRandom();
-        if(instance)
-        {
-            Transform t = instance.transform;
-            if (instance) instance.transform.position = getPosOffscreen(OffscreenOffset, ZPosition);
-        }
+        //if(instance)
+        //{
+        //    //Transform t = instance.transform;
+        //    if (instance) instance.transform.position = getPosOffscreen(OffscreenOffset, ZPosition);
+        //}
     }
 
     // at the given z value, generate a Vector3 representing a random position a distance offset offscreen
-    Vector3 getPosOffscreen(float offset, float z)
+    public Vector3 getPosOffscreen(float offset, float z)
     {
         Vector3 position = Vector3.zero;
         position.z = z;

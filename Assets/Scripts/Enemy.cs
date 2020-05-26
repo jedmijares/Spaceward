@@ -22,25 +22,9 @@ public class Enemy : SpawnableObject
     //private bool shooting;
     //private int shotVolley;
 
-
-    //void Start ()
-    //{
-    //    // get the components
-        
-        
-        
-    //}
-
-    //private void OnEnable()
-    //{
-        
-    //    //shooting = false;
-    //    //shotVolley = Random.Range(minShotVolley, maxShotVolley + 1);
-    //}
-
     //void Update ()
     //{
-        
+
     //}
 
     public void TakeDamage (int damage)

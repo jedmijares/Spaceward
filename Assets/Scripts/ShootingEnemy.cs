@@ -23,7 +23,8 @@ public class ShootingEnemy : Enemy
 
     private void OnEnable()
     {
-        //curHp = maxHp;
+        this.transform.position = GameManager.instance.getPosOffscreen(GameManager.instance.OffscreenOffset, GameManager.instance.ZPosition);
+
         curHp = maxHp;
         shooting = false;
         shotVolley = Random.Range(minShotVolley, maxShotVolley + 1);
