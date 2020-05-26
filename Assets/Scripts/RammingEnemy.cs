@@ -10,6 +10,7 @@ public class RammingEnemy : Enemy
         ATTACKING
     }
     State state;
+    public int attackingSpeed = 15;
     public int damage = 10;
 
     private void OnEnable()
@@ -23,7 +24,11 @@ public class RammingEnemy : Enemy
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             other.GetComponent<Player>().TakeDamage(damage);
+            creator.Reclaim(this);
+        }
+            
 
         //// create the hit particle
         //GameObject obj = Instantiate(hitParticle, transform.position, Quaternion.identity);
@@ -36,14 +41,14 @@ public class RammingEnemy : Enemy
         switch(state)
         {
             case State.INITIALIZING:
-                Move();
+                Move(moveSpeed);
                 if(transform.position == destination)
                 {
                     state = State.ATTACKING;
                 }
                 break;
             case State.ATTACKING:
-                Move();
+                Move(attackingSpeed);
                 destination = Player.instance.transform.position;
                 if (transform.position == destination)
                 {
@@ -53,8 +58,8 @@ public class RammingEnemy : Enemy
         }
     }
 
-    void Move()
+    void Move(float speed)
     {
-        transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
     }
 }
