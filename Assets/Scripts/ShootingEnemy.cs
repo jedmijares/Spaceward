@@ -17,7 +17,7 @@ public class ShootingEnemy : Enemy
     {
         cam = Camera.main;
         weapon = GetComponent<Weapon>();
-        destination = cam.ScreenToWorldPoint(new Vector3(Random.Range(screenEdgeOffset, Screen.width - screenEdgeOffset), Random.Range(screenEdgeOffset, Screen.height - screenEdgeOffset), distanceFromCamera));
+        destination = GetPositionInWindow(); // cam.ScreenToWorldPoint(new Vector3(Random.Range(screenEdgeOffset, Screen.width - screenEdgeOffset), Random.Range(screenEdgeOffset, Screen.height - screenEdgeOffset), distanceFromCamera));
     }
 
     private void OnEnable()
@@ -56,8 +56,8 @@ public class ShootingEnemy : Enemy
         transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
         if (transform.position == destination)
         {
-            destination = cam.ScreenToWorldPoint(new Vector3(Random.Range(screenEdgeOffset, Screen.width - screenEdgeOffset), Random.Range(screenEdgeOffset, Screen.height - screenEdgeOffset), distanceFromCamera));
-            shooting = true;
+            destination = GetPositionInWindow(); // cam.ScreenToWorldPoint(new Vector3(Random.Range(screenEdgeOffset, Screen.width - screenEdgeOffset), Random.Range(screenEdgeOffset, Screen.height - screenEdgeOffset), distanceFromCamera));
+            if(weapon.CanShoot()) shooting = true;
         }
     }
 }

@@ -144,7 +144,7 @@ MonoBehaviour:
   muzzle: {fileID: 3291451151468376683}
   bulletIndex: 1
   bulletSpeed: 10
-  shootRate: 0.1
+  shootRate: 3
 --- !u!64 &3291451151512156924
 MeshCollider:
   m_ObjectHideFlags: 0
