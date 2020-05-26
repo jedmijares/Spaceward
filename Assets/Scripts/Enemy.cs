@@ -8,24 +8,14 @@ public class Enemy : SpawnableObject
     public int curHp;
     public int maxHp = 50;
     public int scoreToGive = 50;
-    //public int minShotVolley = 3;
-    //public int maxShotVolley = 5;
 
     [Header("Movement")]
     public float moveSpeed = 15;
     public int screenEdgeOffset = 75;
     public int distanceFromCamera = 40;
 
-    //private Weapon weapon;
     protected Vector3 destination; // next position to move towards
     protected Camera cam;
-    //private bool shooting;
-    //private int shotVolley;
-
-    //void Update ()
-    //{
-
-    //}
 
     public void TakeDamage (int damage)
     {

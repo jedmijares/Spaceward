@@ -44,7 +44,6 @@ public class Weapon : MonoBehaviour
         {
                 return true;
         }
-
         return false;
     }
 

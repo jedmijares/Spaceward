@@ -17,8 +17,6 @@ public class ObjectSpawner : ScriptableObject
 
 	[SerializeField]
 	public List<SpawnableObject>[] pools;
-	//[SerializeField]
-	//List<SpawnableObject> activeObjects;
 
 	public void initialize()
 	{
@@ -51,7 +49,6 @@ public class ObjectSpawner : ScriptableObject
 					instance = pool[lastIndex];
 					instance.creator = this;
 					instance.gameObject.SetActive(true);
-					//activeObjects.Add(instance);
 					pool.RemoveAt(lastIndex);
 				}
 				else
@@ -59,7 +56,6 @@ public class ObjectSpawner : ScriptableObject
 					instance = Instantiate(prefabs[objectID]);
 					instance.creator = this;
 					instance.ObjectID = objectID;
-					//activeObjects.Add(instance);
 				}
 			}
 			else
@@ -67,7 +63,6 @@ public class ObjectSpawner : ScriptableObject
 				instance = Instantiate(prefabs[objectID]);
 				instance.creator = this;
 				instance.ObjectID = objectID;
-				//activeObjects.Add(instance);
 			}
 
 			return instance;
@@ -92,16 +87,7 @@ public class ObjectSpawner : ScriptableObject
 			Destroy(objectToRecycle.gameObject);
 		}
 		currentCount--;
-		//activeObjects.Remove(objectToRecycle);
 	}
-
-	//public void ReclaimAll()
-	//{
-	//	while(activeObjects.Count > 0)
-	//	{
-	//		Reclaim(activeObjects[0]);
-	//	}
-	//}	
 
 	void CreatePools () {
 		pools = new List<SpawnableObject>[prefabs.Length];

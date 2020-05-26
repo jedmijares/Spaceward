@@ -19,12 +19,10 @@ public class GameUI : MonoBehaviour
     //public TextMeshProUGUI endGameHeaderText;   // end game screen header text
     public TextMeshProUGUI endGameScoreText;    // end game screen displaying our final score
 
-    // instance
     public static GameUI instance;
 
     void Awake ()
     {
-        // set the instance to this script
         instance = this;
     }
 

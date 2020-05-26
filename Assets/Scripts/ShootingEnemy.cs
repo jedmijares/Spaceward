@@ -9,7 +9,6 @@ public class ShootingEnemy : Enemy
     public int maxShotVolley = 5;
 
     private Weapon weapon;
-    //private Vector3 destination; // next position to move towards
     private bool shooting;
     private int shotVolley;
 

@@ -66,28 +66,15 @@ public class GameManager : MonoBehaviour
 
     public void restart()
     {
-        //Player.instance.transform.position = new Vector3(0, 0, 10);
-        //Player.instance.curHp = Player.instance.maxHp;
-        //enemySpawner.ReclaimAll();
-        //bulletSpawner.ReclaimAll();
         enemySpawner.initialize();
         bulletSpawner.initialize();
         SceneManager.LoadScene("Game");
-        //Score = 0;
-        //GameUI.instance.endGameScreen.SetActive(false);
-        //GameUI.instance.UpdateHealthBar(1, 1);
-        //GameUI.instance.UpdateScoreText(0);
     }
 
     // spawn entity of there are fewer than the max allowed by spawnPool
     void Spawn()
     {
         SpawnableObject instance = enemySpawner.GetRandom();
-        //if(instance)
-        //{
-        //    //Transform t = instance.transform;
-        //    if (instance) instance.transform.position = getPosOffscreen(OffscreenOffset, ZPosition);
-        //}
     }
 
     // at the given z value, generate a Vector3 representing a random position a distance offset offscreen
