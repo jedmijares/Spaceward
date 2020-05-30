@@ -11,8 +11,8 @@ public class ObjectSpawner : ScriptableObject
 
 	[SerializeField]
 	bool recycle = true;
-
-	public int maxObjects = -1;
+	
+	public int maxObjects = -1; // -1 for infinite objects
 	public int currentCount = 0;
 
 	[SerializeField]
@@ -32,7 +32,7 @@ public class ObjectSpawner : ScriptableObject
 
 	public SpawnableObject Get (int objectID = 0)
 	{
-		if ((maxObjects <= 0) | (currentCount < maxObjects))
+		if ((maxObjects < 0) | (currentCount < maxObjects))
 		{
 			currentCount++;
 			SpawnableObject instance;
