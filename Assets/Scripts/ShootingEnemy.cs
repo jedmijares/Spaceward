@@ -13,18 +13,16 @@ public class ShootingEnemy : Enemy
     private int shotVolley;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        cam = Camera.main;
+        base.Start();   
         weapon = GetComponent<Weapon>();
         destination = GetPositionInWindow(); // cam.ScreenToWorldPoint(new Vector3(Random.Range(screenEdgeOffset, Screen.width - screenEdgeOffset), Random.Range(screenEdgeOffset, Screen.height - screenEdgeOffset), distanceFromCamera));
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
-        this.transform.position = GameManager.instance.getPosOffscreen(GameManager.instance.OffscreenOffset, GameManager.instance.ZPosition);
-
-        curHp = maxHp;
+        base.OnEnable();
         shooting = false;
         shotVolley = Random.Range(minShotVolley, maxShotVolley + 1);
     }

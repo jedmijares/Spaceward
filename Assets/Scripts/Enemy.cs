@@ -19,6 +19,20 @@ public class Enemy : SpawnableObject
     protected Vector3 destination; // next position to move towards
     protected Camera cam;
 
+    protected virtual void Start()
+    {
+        cam = Camera.main;
+        destination = GetPositionInWindow();
+        curHp = maxHp;
+    }
+
+    protected virtual void OnEnable()
+    {
+        this.transform.position = GameManager.instance.getPosOffscreen(GameManager.instance.OffscreenOffset, GameManager.instance.ZPosition);
+        curHp = maxHp;
+
+    }
+
     public void TakeDamage (int damage)
     {
         curHp -= damage;

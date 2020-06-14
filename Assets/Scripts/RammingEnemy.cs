@@ -13,22 +13,18 @@ public class RammingEnemy : Enemy
     public int attackingSpeed = 15;
     public int damageOnCollision = 10;
 
-    void Start()
+    protected override void Start()
     {
-        cam = Camera.main;
-        destination = GetPositionInWindow();
+        base.Start();
         state = State.INITIALIZING;
-        curHp = maxHp;
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         this.transform.position = GameManager.instance.getPosOffscreen(GameManager.instance.OffscreenOffset, GameManager.instance.ZPosition);
-        // destination = new Vector3(0, 0, GameManager.instance.ZPosition);
         destination = GetPositionInWindow();
-        // destination = cam.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 40));
         state = State.INITIALIZING;
-        curHp = maxHp;
     }
 
     void OnTriggerEnter(Collider other)
