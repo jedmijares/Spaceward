@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public ObjectSpawner enemySpawner;
     public ObjectSpawner bulletSpawner;
 
-    private Camera cam;
+    public Camera cam;
 
     void OnMouseEnter()
     {
@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        enemySpawner.initialize();
-        bulletSpawner.initialize();
+        enemySpawner.Initialize();
+        bulletSpawner.Initialize();
     }
 
     public void AddScore(int score)
@@ -66,8 +66,8 @@ public class GameManager : MonoBehaviour
 
     public void restart()
     {
-        enemySpawner.initialize();
-        bulletSpawner.initialize();
+        enemySpawner.Initialize();
+        bulletSpawner.Initialize();
         SceneManager.LoadScene("Game");
     }
 

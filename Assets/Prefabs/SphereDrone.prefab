@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creator: {fileID: 0}
+  pickupSpawner: {fileID: 11400000, guid: 761f5914b5ec8c14baafa38fadb81808, type: 2}
   curHp: 0
   maxHp: 50
   scoreToGive: 50

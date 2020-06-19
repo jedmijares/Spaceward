@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d29dda18f4484844a9baf328a335683, type: 3}
-  m_Name: EnemySpawner
+  m_Name: PickupSpawner
   m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 3038267760527417882, guid: 38196083e7231d449b9a429fed656e3c, type: 3}
-  - {fileID: 2528504351627577170, guid: 0ab683d06abf22d4b9b005f9915dfd69, type: 3}
-  - {fileID: 8142788010706889943, guid: 7c6327cecc4a0874eb1abb9116b60f30, type: 3}
+  prefabs: []
   recycle: 1
-  maxObjects: 0
+  maxObjects: -1
   currentCount: 0

@@ -18,7 +18,7 @@ public class ObjectSpawner : ScriptableObject
 	[SerializeField]
 	public List<SpawnableObject>[] pools;
 
-	public void initialize()
+	public void Initialize()
 	{
 		currentCount = 0;
 		if (pools != null)

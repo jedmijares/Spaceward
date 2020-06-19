@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damage)
     {
         curHp -= damage;
+        if (curHp > maxHp) curHp = maxHp; // if Player takes negative damage
 
         GameUI.instance.UpdateHealthBar(curHp, maxHp);
 
