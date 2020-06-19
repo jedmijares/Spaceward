@@ -7,10 +7,11 @@ public class Pickup : SpawnableObject
     public GameObject hitParticle;
     Vector3 destination;
     public float moveSpeed = 10;
+    static Bounds targetBox = new Bounds(new Vector3(0, 0, 0), new Vector3(1, 1, 0));
 
     private void OnEnable()
     {
-        destination = new Vector3(0, 0, 0); // Camera.main.WorldToScreenPoint(transform.position);
+        destination = targetBox.ClosestPoint(transform.position); // new Vector3(0, 0, 0); // Camera.main.WorldToScreenPoint(transform.position);
     }
 
     void OnTriggerEnter(Collider other)
