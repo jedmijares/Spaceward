@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,9 +18,10 @@ public class Pickup : SpawnableObject
     {
         if (other.CompareTag("Player"))
         {
-            Player.instance.TakeDamage(-10);
-            GameUI.instance.UpdateHealthBar(Player.instance.curHp, Player.instance.maxHp);
-            Destroy(gameObject);
+            Player.instance.TakeDamage(-4);
+            //GameUI.instance.UpdateHealthBar(Player.instance.curHp, Player.instance.maxHp);
+            //Destroy(gameObject);
+            creator.Reclaim(this);
         }
             
 
