@@ -5,8 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Stats")]
-    public int curHp;
     public int maxHp;
+    private int curHp;
 
     [Header("Movement")]
     public float moveSpeed;             // movement speed in units per second
@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
         rig = GetComponent<Rigidbody>();
         weapon = GetComponent<Weapon>();
         instance = this;
+        curHp = maxHp;
 
         //// disable cursor
         //Cursor.lockState = CursorLockMode.Locked;
