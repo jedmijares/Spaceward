@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     public ObjectSpawner enemySpawner;
     public ObjectSpawner bulletSpawner;
+    public ObjectSpawner pickupSpawner;
 
     public Camera cam;
 
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         enemySpawner.Initialize();
         bulletSpawner.Initialize();
+        pickupSpawner.Initialize();
     }
 
     public void AddScore(int score)
@@ -68,6 +70,7 @@ public class GameManager : MonoBehaviour
     {
         enemySpawner.Initialize();
         bulletSpawner.Initialize();
+        pickupSpawner.Initialize();
         SceneManager.LoadScene("Game");
     }
 

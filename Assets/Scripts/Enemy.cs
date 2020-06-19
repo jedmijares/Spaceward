@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : SpawnableObject
 {
-    [SerializeField]
-    private ObjectSpawner pickupSpawner;
+    //[SerializeField]
+    private ObjectSpawner pickupSpawner = GameManager.instance.pickupSpawner;
 
     [Header("Stats")]
     public int curHp;
