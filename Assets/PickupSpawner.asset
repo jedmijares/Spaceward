@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d29dda18f4484844a9baf328a335683, type: 3}
   m_Name: PickupSpawner
   m_EditorClassIdentifier: 
-  prefabs: []
+  prefabs:
+  - {fileID: 8429502849268532964, guid: e61d77c890204634794b3856cd2b8081, type: 3}
   recycle: 1
   maxObjects: -1
-  currentCount: 0
+  currentCount: 334
