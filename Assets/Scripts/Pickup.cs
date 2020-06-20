@@ -6,7 +6,7 @@ public class Pickup : SpawnableObject
 {
     public GameObject hitParticle;
     Vector3 destination;
-    public float moveSpeed = 10;
+    public float moveSpeed = 15;
     static Bounds targetBox = new Bounds(new Vector3(0, 0, 0), new Vector3(1, 1, 0));
     public const float homingDistance = 2.5F;
 
