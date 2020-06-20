@@ -1,6 +1,7 @@
 ﻿// https://catlikecoding.com/unity/tutorials/object-management/
 
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -68,6 +69,19 @@ public class ObjectSpawner : ScriptableObject
 			return instance;
 		}
 		else return null;
+	}
+
+	// this can probably be optimized
+	public SpawnableObject Get(string name)
+	{
+		for(int i = 0; i < prefabs.Count(); i++)
+		{
+			if (prefabs[i].name == name)
+			{
+				return Get(i);
+			}
+		}
+		return null;
 	}
 
 	public SpawnableObject GetRandom () {

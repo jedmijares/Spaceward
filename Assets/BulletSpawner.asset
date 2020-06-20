@@ -15,6 +15,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 8905915239335416314, guid: 23f6c26c4c2b3fd4b895181354ade401, type: 3}
   - {fileID: 114085993552998324, guid: fff0349a5c0b67849a649cfcaa624094, type: 3}
+  - {fileID: 8905915239335416314, guid: ac3a34c59512e5d409a963c6baa96b6f, type: 3}
   recycle: 1
   maxObjects: -1
-  currentCount: 5
+  currentCount: 3

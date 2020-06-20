@@ -145,6 +145,9 @@ MonoBehaviour:
   bulletIndex: 1
   bulletSpeed: 10
   shootRate: 3
+  chargeShotTime: 0
+  projectile: {fileID: 114085993552998324, guid: fff0349a5c0b67849a649cfcaa624094,
+    type: 3}
 --- !u!64 &3291451151512156924
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -185,7 +188,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creator: {fileID: 0}
-  pickupSpawner: {fileID: 11400000, guid: 761f5914b5ec8c14baafa38fadb81808, type: 2}
   curHp: 0
   maxHp: 50
   scoreToGive: 50
