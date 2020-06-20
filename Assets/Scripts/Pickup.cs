@@ -8,6 +8,7 @@ public class Pickup : SpawnableObject
     Vector3 destination;
     public float moveSpeed = 10;
     static Bounds targetBox = new Bounds(new Vector3(0, 0, 0), new Vector3(1, 1, 0));
+    public const float homingDistance = 2.5F;
 
     private void OnEnable()
     {
@@ -37,6 +38,10 @@ public class Pickup : SpawnableObject
 
     void Move()
     {
+        if(Vector3.Distance(transform.position, Player.instance.transform.position) < homingDistance)
+        {
+            destination = Player.instance.transform.position;
+        }
         transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
         if (transform.position == destination)
         {
