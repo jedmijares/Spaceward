@@ -278,7 +278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091c1eb8a3bd05242b9546067ce11654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curHp: 30
   maxHp: 50
   moveSpeed: 15
   firingSpeedPenalty: 0.2
@@ -325,9 +324,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawner: {fileID: 11400000, guid: 2c0bbe36c6491b14286cfb83f24c2783, type: 2}
   muzzle: {fileID: 1361189166}
-  bulletIndex: 0
   bulletSpeed: 500
   shootRate: 0.1
+  chargeShotTime: 3
+  projectile: {fileID: 8905915239335416314, guid: 23f6c26c4c2b3fd4b895181354ade401,
+    type: 3}
+  chargeProjectile: {fileID: 8905915239335416314, guid: ac3a34c59512e5d409a963c6baa96b6f,
+    type: 3}
 --- !u!65 &211678851
 BoxCollider:
   m_ObjectHideFlags: 0
