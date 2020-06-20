@@ -60,7 +60,6 @@ public class Weapon : MonoBehaviour
         if (((Time.time - lastShootTime) >= chargeShotTime) && chargeProjectile)
         {
             bullet = bulletSpawner.Get(chargeProjectile.gameObject.name);
-            Debug.Log((Time.time - lastShootTime));
         }
         else
         {
