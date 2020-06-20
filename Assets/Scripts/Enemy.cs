@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Enemy : SpawnableObject
 {
+    //[SerializeField]
+    private ObjectSpawner pickupSpawner = GameManager.instance.pickupSpawner;
+
     [Header("Stats")]
     public int curHp;
     public int maxHp = 50;
@@ -30,20 +33,18 @@ public class Enemy : SpawnableObject
     {
         this.transform.position = GameManager.instance.getPosOffscreen(GameManager.instance.OffscreenOffset, GameManager.instance.ZPosition);
         curHp = maxHp;
-
     }
 
     public void TakeDamage (int damage)
     {
         curHp -= damage;
-
-        if(curHp <= 0)
-            Die();
+        if(curHp <= 0) Die();
     }
 
     void Die ()
     {
         GameManager.instance.AddScore(scoreToGive);
+        pickupSpawner.GetRandom().transform.position = transform.position;
         creator.Reclaim(this);
     }
 

@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091c1eb8a3bd05242b9546067ce11654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curHp: 50
+  curHp: 30
   maxHp: 50
   moveSpeed: 15
   firingSpeedPenalty: 0.2
@@ -1990,6 +1990,8 @@ MonoBehaviour:
   InitialTime: 0
   enemySpawner: {fileID: 11400000, guid: 8632f05ccd898c047b12c9194332d3cc, type: 2}
   bulletSpawner: {fileID: 11400000, guid: 2c0bbe36c6491b14286cfb83f24c2783, type: 2}
+  pickupSpawner: {fileID: 11400000, guid: 761f5914b5ec8c14baafa38fadb81808, type: 2}
+  cam: {fileID: 0}
 --- !u!114 &1223549788
 MonoBehaviour:
   m_ObjectHideFlags: 0
