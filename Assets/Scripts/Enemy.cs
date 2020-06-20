@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : SpawnableObject
 {
     //[SerializeField]
-    private ObjectSpawner pickupSpawner = GameManager.instance.pickupSpawner;
+    private ObjectSpawner pickupSpawner; //  = GameManager.instance.pickupSpawner;
 
     [Header("Stats")]
     public int curHp;
@@ -27,6 +27,7 @@ public class Enemy : SpawnableObject
         cam = Camera.main;
         destination = GetPositionInWindow();
         curHp = maxHp;
+        pickupSpawner = GameManager.instance.pickupSpawner;
     }
 
     protected virtual void OnEnable()
