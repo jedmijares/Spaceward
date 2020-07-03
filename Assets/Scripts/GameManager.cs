@@ -5,10 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // https://docs.unity3d.com/ScriptReference/Cursor.SetCursor.html
-    public Texture2D cursorTexture;
-    public CursorMode cursorMode = CursorMode.Auto;
-    public Vector2 hotSpot = Vector2.zero;
+    
     public static GameManager instance;
     public int Score;
 
@@ -23,21 +20,10 @@ public class GameManager : MonoBehaviour
 
     public Camera cam;
 
-    void OnMouseEnter()
-    {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-    }
-
-    void OnMouseExit()
-    {
-        Cursor.SetCursor(null, Vector2.zero, cursorMode);
-    }
-
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("Spawn", InitialTime, SpawnTime);
-        OnMouseEnter();
         instance = this;
         cam = Camera.main;
     }

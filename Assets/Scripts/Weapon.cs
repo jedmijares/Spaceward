@@ -1,9 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Weapon : MonoBehaviour
 {
+    // https://docs.unity3d.com/ScriptReference/Cursor.SetCursor.html
+    public Texture2D cursorTexture;
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
+
+    void OnMouseEnter()
+    {
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+    }
+
+    void OnMouseExit()
+    {
+        Cursor.SetCursor(null, Vector2.zero, cursorMode);
+    }
+
     public ObjectSpawner bulletSpawner;
     public Transform muzzle; // spawn pos for the bullet
     //public int bulletIndex = 0;
@@ -20,10 +37,24 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private Projectile chargeProjectile;
 
+    [SerializeField]
+    private Image reticle;
+
     private Camera cam;
 
     //public AudioClip shootSfx;
     //private AudioSource audioSource;
+
+    private void Update()
+    {
+        if (isPlayer) // OnMouseEnter();
+        {
+            Cursor.visible = false;
+            Vector2 pos;
+            // RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, Input.mousePosition, myCanvas.worldCamera, out pos);
+            reticle.transform.position = Input.mousePosition; //  myCanvas.transform.TransformPoint(pos);
+        }
+}
 
     void Awake ()
     {
